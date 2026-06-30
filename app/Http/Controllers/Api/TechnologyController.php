@@ -29,6 +29,7 @@ class TechnologyController extends CrudController
             'icon_url' => ['nullable', 'url', 'max:500'],
             'icon_class' => ['nullable', 'string', 'max:100'],
             'color' => ['nullable', 'string', 'max:7'],
+            'is_featured' => ['sometimes', 'boolean'],
         ];
     }
 }

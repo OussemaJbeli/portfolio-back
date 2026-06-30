@@ -11,6 +11,10 @@ class Technology extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    protected $casts = [
+        'is_featured' => 'boolean',
+    ];
+
     public function projects(): BelongsToMany
     {
         return $this->belongsToMany(Project::class, 'project_technologies', 'technology_id', 'project_id')

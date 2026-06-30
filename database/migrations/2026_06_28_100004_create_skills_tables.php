@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('icon_url', 500)->nullable();
             $table->string('icon_class', 100)->nullable();        // devicon class
             $table->string('color', 7)->nullable();               // hex e.g. "#42B883"
+            $table->boolean('is_featured')->default(false)        // shown on the home tech strip
+                ->index();
             $table->timestamps();
         });
 
