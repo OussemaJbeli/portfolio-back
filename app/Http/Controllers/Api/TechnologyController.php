@@ -30,6 +30,9 @@ class TechnologyController extends CrudController
             'icon_class' => ['nullable', 'string', 'max:100'],
             'color' => ['nullable', 'string', 'max:7'],
             'is_featured' => ['sometimes', 'boolean'],
+            'group_id' => ['nullable', 'integer', 'exists:technology_groups,id'],
+            'proficiency' => ['sometimes', Rule::in(['core', 'proficient', 'familiar'])],
+            'sort_order' => ['nullable', 'integer', 'min:0'],
         ];
     }
 }

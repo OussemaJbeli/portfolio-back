@@ -10,6 +10,8 @@ use App\Models\Blog;
 use App\Models\BlogSection;
 use App\Models\ContactSection;
 use App\Models\Hero;
+use App\Models\Interest;
+use App\Models\Language;
 use App\Models\NavItem;
 use App\Models\Project;
 use App\Models\ProjectSection;
@@ -19,6 +21,7 @@ use App\Models\SkillSection;
 use App\Models\SocialLink;
 use App\Models\Stat;
 use App\Models\Technology;
+use App\Models\TechnologyGroup;
 use Illuminate\Http\JsonResponse;
 
 /**
@@ -43,6 +46,12 @@ class LandingController extends Controller
             'skills_section' => SkillSection::query()->first(),
             'skill_categories' => SkillCategory::query()->where('is_active', true)->orderBy('sort_order')->get(),
             'technologies' => Technology::query()->orderBy('name')->get(),
+            'technology_groups' => TechnologyGroup::query()
+                ->where('is_active', true)
+                ->with(['technologies' => fn ($q) => $q->orderBy('sort_order')->orderBy('name')])
+                ->orderBy('sort_order')->get(),
+            'languages' => Language::query()->where('is_active', true)->orderBy('sort_order')->get(),
+            'interests' => Interest::query()->where('is_active', true)->orderBy('sort_order')->get(),
 
             'projects_section' => ProjectSection::query()->first(),
             'featured_projects' => Project::query()

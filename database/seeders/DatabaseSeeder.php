@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             PortfolioSeeder::class,
+            ProfileSeeder::class, // after technologies exist (groups them + adds languages/interests)
+            JourneySeeder::class, // after projects exist (freelance commits link to them)
             AdminUserSeeder::class,
         ]);
     }

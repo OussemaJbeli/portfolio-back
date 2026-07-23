@@ -20,6 +20,11 @@ use App\Http\Controllers\Api\ProjectGalleryController;
 use App\Http\Controllers\Api\ProjectFeatureController;
 use App\Http\Controllers\Api\ProjectRoleController;
 use App\Http\Controllers\Api\ProjectTechnologyController;
+use App\Http\Controllers\Api\JourneyController;
+use App\Http\Controllers\Api\JourneySectionController;
+use App\Http\Controllers\Api\JourneyTrackController;
+use App\Http\Controllers\Api\JourneyMilestoneController;
+use App\Http\Controllers\Api\JourneyMilestoneTechnologyController;
 use App\Http\Controllers\Api\BlogSectionController;
 use App\Http\Controllers\Api\BlogCategoryController;
 use App\Http\Controllers\Api\BlogController;
@@ -32,6 +37,9 @@ use App\Http\Controllers\Api\ContactMessageController;
 use App\Http\Controllers\Api\AdminUserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UploadController;
+use App\Http\Controllers\Api\LanguageController;
+use App\Http\Controllers\Api\InterestController;
+use App\Http\Controllers\Api\TechnologyGroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,12 +99,20 @@ Route::get('about-bullets', [AboutBulletController::class, 'index']);
 Route::get('skills-section', [SkillSectionController::class, 'show']);
 Route::get('skill-categories', [SkillCategoryController::class, 'index']);
 Route::get('technologies', [TechnologyController::class, 'index']);
+Route::get('technology-groups', [TechnologyGroupController::class, 'index']); // grouped skills
+
+// Profile / CV data
+Route::get('languages', [LanguageController::class, 'index']);
+Route::get('interests', [InterestController::class, 'index']);
 
 // Projects
 Route::get('projects-section', [ProjectSectionController::class, 'show']);
 Route::get('project-categories', [ProjectCategoryController::class, 'index']);
 Route::get('projects', [ProjectController::class, 'index']);
 Route::get('projects/{project}', [ProjectController::class, 'show']);
+
+// Journey (git-graph parcours) — full graph in one payload
+Route::get('journey', [JourneyController::class, 'index']);
 
 // Blogs
 Route::get('blogs-section', [BlogSectionController::class, 'show']);
@@ -154,7 +170,10 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::apiResource('stats', StatController::class);
     Route::apiResource('about-bullets', AboutBulletController::class);
     Route::apiResource('skill-categories', SkillCategoryController::class);
+    Route::apiResource('technology-groups', TechnologyGroupController::class);
     Route::apiResource('technologies', TechnologyController::class);
+    Route::apiResource('languages', LanguageController::class);
+    Route::apiResource('interests', InterestController::class);
     Route::apiResource('project-categories', ProjectCategoryController::class);
     Route::apiResource('projects', ProjectController::class);
     Route::apiResource('blog-categories', BlogCategoryController::class);
@@ -181,6 +200,20 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::post('blogs/{blog}/categories', [BlogCategoryMapController::class, 'store']);
     Route::put('blogs/{blog}/categories', [BlogCategoryMapController::class, 'sync']);
     Route::delete('blogs/{blog}/categories/{category}', [BlogCategoryMapController::class, 'destroy']);
+
+    // ── Journey (section + tracks + milestones + milestone↔tech) ───────
+    Route::get('journey-section', [JourneySectionController::class, 'show']);
+    Route::put('journey-section', [JourneySectionController::class, 'update']);
+
+    Route::apiResource('journey-tracks', JourneyTrackController::class)
+        ->parameters(['journey-tracks' => 'track']);
+    Route::apiResource('journey-milestones', JourneyMilestoneController::class)
+        ->parameters(['journey-milestones' => 'milestone']);
+
+    // Milestone ↔ technology pivot (attach / sync / detach)
+    Route::post('journey-milestones/{milestone}/technologies', [JourneyMilestoneTechnologyController::class, 'store']);
+    Route::put('journey-milestones/{milestone}/technologies', [JourneyMilestoneTechnologyController::class, 'sync']);
+    Route::delete('journey-milestones/{milestone}/technologies/{technology}', [JourneyMilestoneTechnologyController::class, 'destroy']);
 
     // ── Contact message inbox (read / mark-read / delete) ──────────────
     Route::get('contact-messages', [ContactMessageController::class, 'index']);

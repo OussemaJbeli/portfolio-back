@@ -4,13 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class About extends Model
+class JourneySection extends Model
 {
-    protected $table = 'about';
+    protected $table = 'journey_section';
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
-
-    protected $casts = [
-        'birthdate' => 'date:Y-m-d',
-    ];
 }

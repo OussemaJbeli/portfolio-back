@@ -73,6 +73,7 @@ class ProjectController extends Controller
         return [
             'slug' => ['required', 'string', 'max:200', 'alpha_dash', Rule::unique('projects', 'slug')->ignore($project)],
             'category_id' => ['nullable', 'integer', 'exists:project_categories,id'],
+            'project_type' => ['nullable', Rule::in(['freelance', 'professional', 'academic', 'personal'])],
             'thumbnail_url' => ['nullable', 'url', 'max:500'],
             'is_featured' => ['boolean'],
             'is_active' => ['boolean'],

@@ -6,11 +6,12 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Projects: filter categories, project records, and their gallery, feature
- * checklist, "what I did" role cards and technology pivot.
+ * Projects: real freelance + academic work from the master profile, their
+ * categories, gallery, feature checklist, "what I did" role cards and tech pivot.
  *
  * Idempotent: parents are upserted by slug; children are cleared per-project
- * and re-inserted so re-running never duplicates.
+ * and re-inserted so re-running never duplicates. Images are placeholders —
+ * swap them from the admin board.
  */
 class ProjectSeeder extends Seeder
 {
@@ -21,9 +22,8 @@ class ProjectSeeder extends Seeder
         // ── Categories ────────────────────────────────────────────────────
         $categories = [
             ['web-apps', 'Web Applications', 'Applications Web', 'تطبيقات الويب', 1],
-            ['apis', 'APIs & Backends', 'APIs & Backends', 'واجهات برمجية', 2],
-            ['mobile', 'Mobile Apps', 'Applications Mobiles', 'تطبيقات الجوال', 3],
-            ['open-source', 'Open Source', 'Open Source', 'مفتوح المصدر', 4],
+            ['education', 'Education Platforms', 'Plateformes éducatives', 'منصّات تعليمية', 2],
+            ['landing-pages', 'Landing Pages', 'Landing pages', 'صفحات هبوط', 3],
         ];
         foreach ($categories as [$slug, $en, $fr, $ar, $order]) {
             DB::table('project_categories')->updateOrInsert(
@@ -36,138 +36,160 @@ class ProjectSeeder extends Seeder
         // ── Projects ──────────────────────────────────────────────────────
         $projects = [
             [
-                'slug' => 'portfolio-cms',
+                'slug' => 'boonapp',
                 'category' => 'web-apps',
+                'project_type' => 'freelance',
                 'is_featured' => true,
                 'sort_order' => 1,
-                'completed_date' => '2025-03-20',
-                'title_en' => 'Portfolio CMS', 'title_fr' => 'CMS Portfolio', 'title_ar' => 'نظام إدارة المحفظة',
-                'subtitle_en' => 'A trilingual, theme-aware content manager', 'subtitle_fr' => 'Un gestionnaire de contenu trilingue', 'subtitle_ar' => 'مدير محتوى ثلاثي اللغات',
-                'description_en' => 'A headless CMS powering a developer portfolio, with a Vue admin and a Laravel API.',
-                'description_fr' => "Un CMS headless qui alimente un portfolio de développeur, avec un admin Vue et une API Laravel.",
-                'description_ar' => 'نظام إدارة محتوى يشغّل محفظة مطوّر، بواجهة إدارة Vue وواجهة Laravel.',
-                'about_en' => 'Built a complete back-office to manage every section of a multilingual portfolio: hero, projects, blog and more. Content is editable in Arabic, French and English from a single switcher per field.',
-                'about_fr' => "Création d'un back-office complet pour gérer chaque section d'un portfolio multilingue : hero, projets, blog et plus. Le contenu est éditable en arabe, français et anglais.",
-                'about_ar' => 'بناء لوحة تحكم كاملة لإدارة كل قسم من المحفظة متعددة اللغات: الواجهة، المشاريع، المدونة وغيرها. المحتوى قابل للتحرير بالعربية والفرنسية والإنجليزية.',
-                'client_en' => 'Personal', 'client_fr' => 'Personnel', 'client_ar' => 'شخصي',
-                'duration_en' => '6 weeks', 'duration_fr' => '6 semaines', 'duration_ar' => '6 أسابيع',
-                'thumbnail_url' => 'https://picsum.photos/seed/portfolio-cms/800/600',
-                'hero_image_url' => 'https://picsum.photos/seed/portfolio-cms-hero/1600/900',
-                'live_demo_url' => 'https://demo.example.com/portfolio-cms',
-                'github_url' => 'https://github.com/oussema-jbeli/portfolio-cms',
-                'technologies' => ['Vue.js', 'Laravel', 'TypeScript', 'Tailwind CSS', 'MySQL'],
-                'gallery' => [
-                    ['https://picsum.photos/seed/cms-g1/1200/800', 'Dashboard overview', "Vue d'ensemble du tableau de bord", 'نظرة عامة على لوحة التحكم'],
-                    ['https://picsum.photos/seed/cms-g2/1200/800', 'Multilingual editor', 'Éditeur multilingue', 'محرّر متعدد اللغات'],
-                ],
+                'completed_date' => '2023-11-01',
+                'title_en' => 'BoonApp', 'title_fr' => 'BoonApp', 'title_ar' => 'BoonApp',
+                'subtitle_en' => 'Large real-estate platform (production)', 'subtitle_fr' => 'Grande plateforme immobilière (production)', 'subtitle_ar' => 'منصّة عقارية كبيرة (إنتاج)',
+                'description_en' => 'A production real-estate platform with listings, search and agent dashboards, built full-stack.',
+                'description_fr' => 'Une plateforme immobilière en production avec annonces, recherche et tableaux de bord agents, développée full-stack.',
+                'description_ar' => 'منصّة عقارية في الإنتاج مع عروض وبحث ولوحات للوكلاء، مطوّرة full-stack.',
+                'about_en' => 'BoonApp is a large real-estate product delivered end to end as a freelancer: property listings and media, search and filtering, and dashboards for agents. Built with Laravel and Vue on a MySQL database and shipped to production at boonapp.tn.',
+                'about_fr' => "BoonApp est un grand produit immobilier livré de bout en bout en freelance : annonces et médias, recherche et filtres, tableaux de bord agents. Développé avec Laravel et Vue sur MySQL et mis en production sur boonapp.tn.",
+                'about_ar' => 'BoonApp منتج عقاري كبير سُلّم بالكامل بصفة مستقل: عروض العقارات والوسائط، البحث والتصفية، ولوحات للوكلاء. مبني بـ Laravel وVue على قاعدة MySQL ومنشور في الإنتاج على boonapp.tn.',
+                'client_en' => 'Freelance', 'client_fr' => 'Freelance', 'client_ar' => 'عمل حر',
+                'live_demo_url' => 'https://boonapp.tn',
+                'technologies' => ['Laravel', 'Vue.js', 'TypeScript', 'MySQL'],
                 'features' => [
-                    ['One input + language switcher per field', 'Un champ + sélecteur de langue', 'حقل واحد مع مبدّل لغة'],
-                    ['Image uploads per section', 'Téléversement d\'images par section', 'رفع الصور لكل قسم'],
-                    ['Token-based auth with Sanctum', 'Authentification par token avec Sanctum', 'مصادقة بالرموز عبر Sanctum'],
+                    ['Property listings with media galleries', 'Annonces avec galeries média', 'عروض عقارية مع معارض وسائط'],
+                    ['Search & filtering', 'Recherche et filtrage', 'بحث وتصفية'],
+                    ['Agent dashboards', 'Tableaux de bord agents', 'لوحات تحكّم للوكلاء'],
                 ],
                 'roles' => [
-                    ['fas fa-server', 'Backend & API', 'Backend & API', 'الخلفية والـ API', 'Designed the Laravel API, migrations and resource controllers.', "Conception de l'API Laravel, des migrations et des contrôleurs.", 'تصميم واجهة Laravel والهجرات والمتحكّمات.'],
-                    ['fas fa-paint-brush', 'Frontend & UX', 'Frontend & UX', 'الواجهة وتجربة المستخدم', 'Built the Vue dashboard and the multilingual form system.', 'Création du tableau de bord Vue et du système de formulaires.', 'بناء لوحة Vue ونظام النماذج متعدد اللغات.'],
+                    ['fas fa-layer-group', 'Full-stack development', 'Développement full-stack', 'تطوير full-stack', 'Delivered the platform end to end — backend, API and frontend.', "Livraison de la plateforme de bout en bout — backend, API et frontend.", 'تسليم المنصّة بالكامل — الخلفية والـ API والواجهة.'],
                 ],
             ],
             [
-                'slug' => 'taskflow-saas',
+                'slug' => 'ecoboxfactory',
                 'category' => 'web-apps',
+                'project_type' => 'freelance',
                 'is_featured' => true,
                 'sort_order' => 2,
-                'completed_date' => '2024-12-10',
-                'title_en' => 'TaskFlow', 'title_fr' => 'TaskFlow', 'title_ar' => 'TaskFlow',
-                'subtitle_en' => 'Realtime team task management', 'subtitle_fr' => "Gestion de tâches d'équipe en temps réel", 'subtitle_ar' => 'إدارة مهام الفريق في الوقت الحقيقي',
-                'description_en' => 'A SaaS for teams to plan, assign and track work with realtime boards.',
-                'description_fr' => 'Un SaaS pour planifier, assigner et suivre le travail avec des tableaux en temps réel.',
-                'description_ar' => 'منصة SaaS للفرق لتخطيط المهام وإسنادها وتتبّعها بلوحات فورية.',
-                'about_en' => 'TaskFlow gives teams kanban boards, assignments and notifications backed by websockets, with role-based access and an audit trail.',
-                'about_fr' => 'TaskFlow offre des tableaux kanban, des assignations et des notifications via websockets, avec des accès par rôle et un journal d\'audit.',
-                'about_ar' => 'يوفّر TaskFlow لوحات كانبان وإسناد المهام وإشعارات عبر websockets، مع صلاحيات حسب الدور وسجلّ تدقيق.',
-                'client_en' => 'Acme Inc.', 'client_fr' => 'Acme Inc.', 'client_ar' => 'Acme Inc.',
-                'duration_en' => '4 months', 'duration_fr' => '4 mois', 'duration_ar' => '4 أشهر',
-                'thumbnail_url' => 'https://picsum.photos/seed/taskflow/800/600',
-                'hero_image_url' => 'https://picsum.photos/seed/taskflow-hero/1600/900',
-                'live_demo_url' => 'https://demo.example.com/taskflow',
-                'github_url' => null,
-                'technologies' => ['Vue.js', 'Laravel', 'Redis', 'PostgreSQL', 'Docker'],
-                'gallery' => [
-                    ['https://picsum.photos/seed/tf-g1/1200/800', 'Kanban board', 'Tableau kanban', 'لوحة كانبان'],
-                    ['https://picsum.photos/seed/tf-g2/1200/800', 'Team dashboard', "Tableau de bord d'équipe", 'لوحة الفريق'],
-                ],
+                'completed_date' => '2023-08-01',
+                'title_en' => 'EcoBoxFactory', 'title_fr' => 'EcoBoxFactory', 'title_ar' => 'EcoBoxFactory',
+                'subtitle_en' => 'Tiny-house product site (production)', 'subtitle_fr' => 'Site produit de tiny-houses (production)', 'subtitle_ar' => 'موقع منتجات المنازل الصغيرة (إنتاج)',
+                'description_en' => 'A production product site for a tiny-house maker, built full-stack.',
+                'description_fr' => 'Un site produit en production pour un fabricant de tiny-houses, développé full-stack.',
+                'description_ar' => 'موقع منتجات في الإنتاج لصانع منازل صغيرة، مطوّر full-stack.',
+                'about_en' => 'EcoBoxFactory presents a tiny-house product range with a catalogue, product pages and enquiry flows. Built full-stack with Laravel and Vue on PostgreSQL and shipped to production at ecoboxfactory.com.',
+                'about_fr' => "EcoBoxFactory présente une gamme de tiny-houses avec catalogue, pages produit et demandes de contact. Développé full-stack avec Laravel et Vue sur PostgreSQL, en production sur ecoboxfactory.com.",
+                'about_ar' => 'يعرض EcoBoxFactory تشكيلة منازل صغيرة مع كتالوج وصفحات منتجات ونماذج استفسار. مبني full-stack بـ Laravel وVue على PostgreSQL ومنشور على ecoboxfactory.com.',
+                'client_en' => 'Freelance', 'client_fr' => 'Freelance', 'client_ar' => 'عمل حر',
+                'live_demo_url' => 'https://ecoboxfactory.com',
+                'technologies' => ['Laravel', 'Vue.js', 'TypeScript', 'PostgreSQL'],
                 'features' => [
-                    ['Realtime kanban with websockets', 'Kanban en temps réel via websockets', 'كانبان فوري عبر websockets'],
-                    ['Role-based permissions', 'Permissions basées sur les rôles', 'صلاحيات حسب الدور'],
-                    ['Email & in-app notifications', 'Notifications email et in-app', 'إشعارات بالبريد وداخل التطبيق'],
+                    ['Product catalogue & detail pages', 'Catalogue et pages produit', 'كتالوج وصفحات منتجات'],
+                    ['Enquiry / contact flows', 'Parcours de demande / contact', 'نماذج استفسار وتواصل'],
                 ],
                 'roles' => [
-                    ['fas fa-bolt', 'Realtime layer', 'Couche temps réel', 'طبقة الزمن الحقيقي', 'Implemented websocket broadcasting and presence.', 'Mise en place de la diffusion websocket et de la présence.', 'تنفيذ البثّ الفوري وحضور المستخدمين.'],
-                    ['fas fa-lock', 'Auth & roles', 'Auth & rôles', 'المصادقة والأدوار', 'Built RBAC and the audit trail.', 'Création du RBAC et du journal d\'audit.', 'بناء نظام الصلاحيات وسجلّ التدقيق.'],
+                    ['fas fa-layer-group', 'Full-stack development', 'Développement full-stack', 'تطوير full-stack', 'Built the catalogue, product pages and backend.', 'Création du catalogue, des pages produit et du backend.', 'بناء الكتالوج وصفحات المنتجات والخلفية.'],
                 ],
             ],
             [
-                'slug' => 'shopnest-api',
-                'category' => 'apis',
-                'is_featured' => false,
+                'slug' => 'tenja7',
+                'category' => 'education',
+                'project_type' => 'freelance',
+                'is_featured' => true,
                 'sort_order' => 3,
-                'completed_date' => '2024-08-05',
-                'title_en' => 'ShopNest API', 'title_fr' => 'API ShopNest', 'title_ar' => 'واجهة ShopNest',
-                'subtitle_en' => 'E-commerce REST API', 'subtitle_fr' => 'API REST e-commerce', 'subtitle_ar' => 'واجهة REST للتجارة الإلكترونية',
-                'description_en' => 'A scalable e-commerce API with carts, orders, payments and inventory.',
-                'description_fr' => 'Une API e-commerce évolutive avec paniers, commandes, paiements et stock.',
-                'description_ar' => 'واجهة برمجية قابلة للتوسّع للتجارة الإلكترونية مع السلة والطلبات والمدفوعات والمخزون.',
-                'about_en' => 'A documented REST API powering web and mobile storefronts, with Stripe payments, webhooks and queued jobs for fulfilment.',
-                'about_fr' => 'Une API REST documentée pour boutiques web et mobiles, avec paiements Stripe, webhooks et jobs en file pour la logistique.',
-                'about_ar' => 'واجهة REST موثّقة تشغّل متاجر الويب والجوال، مع مدفوعات Stripe وwebhooks ومهام مجدولة للتنفيذ.',
-                'client_en' => 'Retail startup', 'client_fr' => 'Startup retail', 'client_ar' => 'شركة ناشئة للتجزئة',
-                'duration_en' => '3 months', 'duration_fr' => '3 mois', 'duration_ar' => '3 أشهر',
-                'thumbnail_url' => 'https://picsum.photos/seed/shopnest/800/600',
-                'hero_image_url' => 'https://picsum.photos/seed/shopnest-hero/1600/900',
-                'live_demo_url' => null,
-                'github_url' => 'https://github.com/oussema-jbeli/shopnest-api',
-                'technologies' => ['Laravel', 'PHP', 'MySQL', 'Redis', 'Docker'],
-                'gallery' => [
-                    ['https://picsum.photos/seed/sn-g1/1200/800', 'API documentation', 'Documentation API', 'توثيق الواجهة'],
-                ],
+                'completed_date' => '2023-04-01',
+                'title_en' => 'Tenja7', 'title_fr' => 'Tenja7', 'title_ar' => 'Tenja7',
+                'subtitle_en' => 'Education platform (production)', 'subtitle_fr' => 'Plateforme éducative (production)', 'subtitle_ar' => 'منصّة تعليمية (إنتاج)',
+                'description_en' => 'A full-stack education platform with courses and student management.',
+                'description_fr' => 'Une plateforme éducative full-stack avec cours et gestion des étudiants.',
+                'description_ar' => 'منصّة تعليمية full-stack مع دورات وإدارة للطلاب.',
+                'about_en' => 'Tenja7 is a production education platform delivering courses and content with student management, built full-stack with Laravel and Vue on MySQL and shipped at tenja7.tn.',
+                'about_fr' => "Tenja7 est une plateforme éducative en production proposant cours et contenus avec gestion des étudiants, développée full-stack avec Laravel et Vue sur MySQL, en ligne sur tenja7.tn.",
+                'about_ar' => 'Tenja7 منصّة تعليمية في الإنتاج تقدّم الدورات والمحتوى مع إدارة الطلاب، مبنية full-stack بـ Laravel وVue على MySQL ومنشورة على tenja7.tn.',
+                'client_en' => 'Freelance', 'client_fr' => 'Freelance', 'client_ar' => 'عمل حر',
+                'live_demo_url' => 'https://tenja7.tn',
+                'technologies' => ['Laravel', 'Vue.js', 'TypeScript', 'MySQL'],
                 'features' => [
-                    ['OpenAPI documentation', 'Documentation OpenAPI', 'توثيق OpenAPI'],
-                    ['Stripe payments & webhooks', 'Paiements Stripe & webhooks', 'مدفوعات Stripe وwebhooks'],
-                    ['Queued order fulfilment', 'Traitement des commandes en file', 'تنفيذ الطلبات عبر الطوابير'],
+                    ['Courses & content', 'Cours et contenus', 'الدورات والمحتوى'],
+                    ['Student management', 'Gestion des étudiants', 'إدارة الطلاب'],
                 ],
                 'roles' => [
-                    ['fas fa-database', 'Architecture', 'Architecture', 'الهندسة', 'Modelled the domain and database schema.', 'Modélisation du domaine et du schéma.', 'نمذجة المجال ومخطّط قاعدة البيانات.'],
+                    ['fas fa-layer-group', 'Full-stack development', 'Développement full-stack', 'تطوير full-stack', 'Built courses, content and student management end to end.', 'Développement des cours, contenus et gestion des étudiants de bout en bout.', 'بناء الدورات والمحتوى وإدارة الطلاب بالكامل.'],
                 ],
             ],
             [
-                'slug' => 'fittrack-mobile',
-                'category' => 'mobile',
-                'is_featured' => false,
+                'slug' => 'ai-toolbox',
+                'category' => 'web-apps',
+                'project_type' => 'academic',
+                'is_featured' => true,
                 'sort_order' => 4,
-                'completed_date' => '2024-05-18',
-                'title_en' => 'FitTrack', 'title_fr' => 'FitTrack', 'title_ar' => 'FitTrack',
-                'subtitle_en' => 'Workout tracking companion', 'subtitle_fr' => "Compagnon de suivi d'entraînement", 'subtitle_ar' => 'رفيق تتبّع التمارين',
-                'description_en' => 'A mobile app to log workouts, track progress and set goals.',
-                'description_fr' => "Une application mobile pour enregistrer les entraînements et suivre les progrès.",
-                'description_ar' => 'تطبيق جوال لتسجيل التمارين وتتبّع التقدّم وتحديد الأهداف.',
-                'about_en' => 'Cross-platform app with offline-first sync, charts and reminders, backed by a lightweight API.',
-                'about_fr' => 'Application multiplateforme avec synchronisation offline-first, graphiques et rappels, adossée à une API légère.',
-                'about_ar' => 'تطبيق متعدّد المنصّات مع مزامنة تعمل دون اتصال أولًا، ورسوم بيانية وتذكيرات، مدعوم بواجهة خفيفة.',
-                'client_en' => 'Personal', 'client_fr' => 'Personnel', 'client_ar' => 'شخصي',
-                'duration_en' => '2 months', 'duration_fr' => '2 mois', 'duration_ar' => 'شهران',
-                'thumbnail_url' => 'https://picsum.photos/seed/fittrack/800/600',
-                'hero_image_url' => 'https://picsum.photos/seed/fittrack-hero/1600/900',
+                'completed_date' => '2024-06-01',
+                'title_en' => 'AI-Toolbox', 'title_fr' => 'AI-Toolbox', 'title_ar' => 'AI-Toolbox',
+                'subtitle_en' => 'Final-year project — Laravel + Vue AI app', 'subtitle_fr' => 'Projet de fin d\'études — application IA Laravel + Vue', 'subtitle_ar' => 'مشروع التخرّج — تطبيق ذكاء اصطناعي Laravel + Vue',
+                'description_en' => 'A full AI-Toolbox application built as the Software Engineering final-year project.',
+                'description_fr' => "Une application AI-Toolbox complète, projet de fin d'études en génie logiciel.",
+                'description_ar' => 'تطبيق AI-Toolbox كامل، مشروع تخرّج هندسة البرمجيات.',
+                'about_en' => 'AI-Toolbox bundles several AI-powered tools behind a single Laravel + Vue application. Built as the Software Engineering license final-year project with full development ownership — from requirements to delivery.',
+                'about_fr' => "AI-Toolbox regroupe plusieurs outils basés sur l'IA dans une seule application Laravel + Vue. Réalisé comme projet de fin d'études de la licence en génie logiciel, avec une pleine responsabilité du développement — des besoins à la livraison.",
+                'about_ar' => 'يجمع AI-Toolbox عدّة أدوات مدعومة بالذكاء الاصطناعي في تطبيق واحد Laravel + Vue. أُنجز كمشروع تخرّج لإجازة هندسة البرمجيات بملكية تطوير كاملة — من المتطلبات إلى التسليم.',
+                'client_en' => 'ISSAT Mateur — final-year project', 'client_fr' => 'ISSAT Mateur — projet de fin d\'études', 'client_ar' => 'ISSAT Mateur — مشروع تخرّج',
                 'live_demo_url' => null,
-                'github_url' => 'https://github.com/oussema-jbeli/fittrack',
-                'technologies' => ['React', 'TypeScript', 'Node.js'],
-                'gallery' => [
-                    ['https://picsum.photos/seed/ft-g1/1200/800', 'Progress charts', 'Graphiques de progrès', 'رسوم التقدّم'],
-                ],
+                'technologies' => ['Laravel', 'Vue.js', 'PHP'],
                 'features' => [
-                    ['Offline-first sync', 'Synchronisation offline-first', 'مزامنة دون اتصال أولًا'],
-                    ['Progress charts', 'Graphiques de progrès', 'رسوم بيانية للتقدّم'],
+                    ['Multiple AI tools in one app', 'Plusieurs outils IA dans une app', 'عدّة أدوات ذكاء اصطناعي في تطبيق واحد'],
+                    ['Full development ownership', 'Pleine responsabilité du développement', 'ملكية تطوير كاملة'],
                 ],
                 'roles' => [
-                    ['fas fa-mobile-screen', 'Mobile app', 'Application mobile', 'تطبيق الجوال', 'Built the app and offline sync engine.', 'Création de l\'app et du moteur de synchronisation.', 'بناء التطبيق ومحرّك المزامنة دون اتصال.'],
+                    ['fas fa-brain', 'End-to-end ownership', 'Responsabilité de bout en bout', 'مسؤولية شاملة', 'Owned requirements, architecture, development and delivery.', 'Prise en charge des besoins, de l\'architecture, du développement et de la livraison.', 'تولّي المتطلبات والهندسة والتطوير والتسليم.'],
+                ],
+            ],
+            [
+                'slug' => 'tolab',
+                'category' => 'education',
+                'project_type' => 'freelance',
+                'is_featured' => false,
+                'sort_order' => 5,
+                'completed_date' => '2022-09-01',
+                'title_en' => 'Tolab', 'title_fr' => 'Tolab', 'title_ar' => 'Tolab',
+                'subtitle_en' => 'Full-stack education platform', 'subtitle_fr' => 'Plateforme éducative full-stack', 'subtitle_ar' => 'منصّة تعليمية full-stack',
+                'description_en' => 'A full-stack education platform for courses and learners.',
+                'description_fr' => 'Une plateforme éducative full-stack pour cours et apprenants.',
+                'description_ar' => 'منصّة تعليمية full-stack للدورات والمتعلّمين.',
+                'about_en' => 'Tolab is a full-stack education platform delivering courses to learners, built with Laravel and Vue on a MySQL database.',
+                'about_fr' => 'Tolab est une plateforme éducative full-stack proposant des cours aux apprenants, développée avec Laravel et Vue sur MySQL.',
+                'about_ar' => 'Tolab منصّة تعليمية full-stack تقدّم الدورات للمتعلّمين، مبنية بـ Laravel وVue على MySQL.',
+                'client_en' => 'Freelance', 'client_fr' => 'Freelance', 'client_ar' => 'عمل حر',
+                'live_demo_url' => null,
+                'technologies' => ['Laravel', 'Vue.js', 'TypeScript', 'MySQL'],
+                'features' => [
+                    ['Courses & lessons', 'Cours et leçons', 'الدورات والدروس'],
+                    ['Learner accounts', 'Comptes apprenants', 'حسابات المتعلّمين'],
+                ],
+                'roles' => [
+                    ['fas fa-layer-group', 'Full-stack development', 'Développement full-stack', 'تطوير full-stack', 'Built the platform end to end.', 'Développement de la plateforme de bout en bout.', 'بناء المنصّة بالكامل.'],
+                ],
+            ],
+            [
+                'slug' => 'animated-landing-pages',
+                'category' => 'landing-pages',
+                'project_type' => 'freelance',
+                'is_featured' => false,
+                'sort_order' => 6,
+                'completed_date' => '2023-01-01',
+                'title_en' => 'Animated Landing Pages', 'title_fr' => 'Landing pages animées', 'title_ar' => 'صفحات هبوط متحرّكة',
+                'subtitle_en' => 'Front-end / motion', 'subtitle_fr' => 'Front-end / motion', 'subtitle_ar' => 'واجهة أمامية / حركة',
+                'description_en' => 'A set of animated marketing landing pages with motion and scroll effects.',
+                'description_fr' => 'Un ensemble de landing pages marketing animées avec effets de mouvement et de défilement.',
+                'description_ar' => 'مجموعة صفحات هبوط تسويقية متحرّكة مع تأثيرات حركة وتمرير.',
+                'about_en' => 'Freelance front-end work: animated marketing landing pages with scroll-driven motion and interactive effects.',
+                'about_fr' => 'Travail front-end en freelance : landing pages marketing animées avec mouvement au défilement et effets interactifs.',
+                'about_ar' => 'عمل واجهة أمامية بصفة مستقل: صفحات هبوط تسويقية متحرّكة مع حركة مرتبطة بالتمرير وتأثيرات تفاعلية.',
+                'client_en' => 'Freelance', 'client_fr' => 'Freelance', 'client_ar' => 'عمل حر',
+                'live_demo_url' => null,
+                'technologies' => ['JavaScript', 'Tailwind CSS'],
+                'features' => [
+                    ['Scroll-driven motion', 'Mouvement au défilement', 'حركة مرتبطة بالتمرير'],
+                    ['Interactive animations', 'Animations interactives', 'رسوم متحرّكة تفاعلية'],
+                ],
+                'roles' => [
+                    ['fas fa-wand-magic-sparkles', 'Front-end & motion', 'Front-end & motion', 'الواجهة والحركة', 'Designed and built animated, responsive landing pages.', 'Conception et développement de landing pages animées et responsives.', 'تصميم وبناء صفحات هبوط متحرّكة ومتجاوبة.'],
                 ],
             ],
         ];
@@ -177,8 +199,9 @@ class ProjectSeeder extends Seeder
                 ['slug' => $p['slug']],
                 [
                     'category_id' => $catId($p['category']),
-                    'thumbnail_url' => $p['thumbnail_url'],
-                    'hero_image_url' => $p['hero_image_url'],
+                    'project_type' => $p['project_type'],
+                    'thumbnail_url' => 'https://picsum.photos/seed/'.$p['slug'].'/800/600',
+                    'hero_image_url' => 'https://picsum.photos/seed/'.$p['slug'].'-hero/1600/900',
                     'is_featured' => $p['is_featured'],
                     'is_active' => true,
                     'sort_order' => $p['sort_order'],
@@ -187,25 +210,24 @@ class ProjectSeeder extends Seeder
                     'description_en' => $p['description_en'], 'description_fr' => $p['description_fr'], 'description_ar' => $p['description_ar'],
                     'about_en' => $p['about_en'], 'about_fr' => $p['about_fr'], 'about_ar' => $p['about_ar'],
                     'client_en' => $p['client_en'], 'client_fr' => $p['client_fr'], 'client_ar' => $p['client_ar'],
-                    'duration_en' => $p['duration_en'], 'duration_fr' => $p['duration_fr'], 'duration_ar' => $p['duration_ar'],
+                    'duration_en' => null, 'duration_fr' => null, 'duration_ar' => null,
                     'completed_date' => $p['completed_date'],
                     'live_demo_url' => $p['live_demo_url'],
-                    'github_url' => $p['github_url'],
+                    'github_url' => null,
                     'updated_at' => $now, 'created_at' => $now,
                 ]
             );
 
             $projectId = DB::table('projects')->where('slug', $p['slug'])->value('id');
 
-            // Children — clear then insert (idempotent).
+            // Children — clear then insert (idempotent). One placeholder gallery image.
             DB::table('project_gallery')->where('project_id', $projectId)->delete();
-            foreach ($p['gallery'] as $i => [$url, $altEn, $altFr, $altAr]) {
-                DB::table('project_gallery')->insert([
-                    'project_id' => $projectId, 'image_url' => $url,
-                    'alt_en' => $altEn, 'alt_fr' => $altFr, 'alt_ar' => $altAr,
-                    'sort_order' => $i + 1, 'updated_at' => $now, 'created_at' => $now,
-                ]);
-            }
+            DB::table('project_gallery')->insert([
+                'project_id' => $projectId,
+                'image_url' => 'https://picsum.photos/seed/'.$p['slug'].'-g1/1200/800',
+                'alt_en' => $p['title_en'], 'alt_fr' => $p['title_fr'], 'alt_ar' => $p['title_ar'],
+                'sort_order' => 1, 'updated_at' => $now, 'created_at' => $now,
+            ]);
 
             DB::table('project_features')->where('project_id', $projectId)->delete();
             foreach ($p['features'] as $i => [$en, $fr, $ar]) {
@@ -241,9 +263,9 @@ class ProjectSeeder extends Seeder
         DB::table('projects_section')->updateOrInsert(
             ['id' => 1],
             [
-                'subheading_en' => 'A selection of products I have designed and built.',
-                'subheading_fr' => "Une sélection de produits que j'ai conçus et développés.",
-                'subheading_ar' => 'مجموعة مختارة من المنتجات التي صمّمتها وبنيتها.',
+                'subheading_en' => 'Real products I have designed, built and shipped — freelance and academic.',
+                'subheading_fr' => "De vrais produits que j'ai conçus, développés et livrés — freelance et académique.",
+                'subheading_ar' => 'منتجات حقيقية صمّمتها وبنيتها وأطلقتها — عمل حر وأكاديمي.',
                 'updated_at' => $now, 'created_at' => $now,
             ]
         );

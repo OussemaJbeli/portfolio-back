@@ -22,11 +22,11 @@ class ContactSeeder extends Seeder
                 'subtext_en' => 'Have a project in mind or just want to say hello? My inbox is always open.',
                 'subtext_fr' => 'Un projet en tête ou juste envie de dire bonjour ? Ma boîte de réception est toujours ouverte.',
                 'subtext_ar' => 'لديك مشروع في ذهنك أو تريد فقط إلقاء التحية؟ صندوق الوارد لديّ مفتوح دائمًا.',
-                'email' => 'hello@oussemajbeli.dev',
-                'phone' => '+216 20 000 000',
-                'location_en' => 'Tunis, Tunisia',
-                'location_fr' => 'Tunis, Tunisie',
-                'location_ar' => 'تونس، تونس',
+                'email' => 'jbelioussema33@gmail.com',
+                'phone' => '+216 95 664 161',
+                'location_en' => 'Amdoun, Béja, Tunisia',
+                'location_fr' => 'Amdoun, Béja, Tunisie',
+                'location_ar' => 'عمدون، باجة، تونس',
                 'updated_at' => $now, 'created_at' => $now,
             ]
         );

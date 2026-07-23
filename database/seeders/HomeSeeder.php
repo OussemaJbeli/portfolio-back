@@ -18,19 +18,19 @@ class HomeSeeder extends Seeder
         DB::table('hero')->updateOrInsert(
             ['id' => 1],
             [
-                'badge_en' => '> FULL-STACK DEVELOPER',
-                'badge_fr' => '> DÉVELOPPEUR FULL-STACK',
-                'badge_ar' => '> مطوّر full-stack',
+                'badge_en' => '> DEVOPS · FULL-STACK · AI ENGINEER',
+                'badge_fr' => '> INGÉNIEUR DEVOPS · FULL-STACK · IA',
+                'badge_ar' => '> مهندس DevOps · Full-Stack · ذكاء اصطناعي',
                 'greeting_en' => "Hello, I'm",
                 'greeting_fr' => 'Bonjour, je suis',
                 'greeting_ar' => 'مرحبًا، أنا',
                 'full_name' => 'Oussema Jbeli',
-                'typewriter_en' => json_encode(['I build modern web apps', 'I design clean interfaces', 'I ship reliable APIs']),
-                'typewriter_fr' => json_encode(['Je crée des applications web modernes', 'Je conçois des interfaces épurées', 'Je livre des APIs fiables']),
-                'typewriter_ar' => json_encode(['أبني تطبيقات ويب حديثة', 'أصمّم واجهات أنيقة', 'أطوّر واجهات برمجية موثوقة']),
-                'tagline_en' => 'I craft fast, accessible and maintainable products from database to pixel.',
-                'tagline_fr' => 'Je conçois des produits rapides, accessibles et maintenables, de la base de données au pixel.',
-                'tagline_ar' => 'أصنع منتجات سريعة وسهلة الوصول وقابلة للصيانة، من قاعدة البيانات إلى أدق التفاصيل.',
+                'typewriter_en' => json_encode(['DevOps & Cloud (AWS)', 'Full-Stack — Laravel · Vue · TypeScript', 'AI & Data Science', 'CI/CD · Docker · Microservices']),
+                'typewriter_fr' => json_encode(['DevOps & Cloud (AWS)', 'Full-Stack — Laravel · Vue · TypeScript', 'IA & Data Science', 'CI/CD · Docker · Microservices']),
+                'typewriter_ar' => json_encode(['DevOps وسحابة (AWS)', 'Full-Stack — Laravel · Vue · TypeScript', 'ذكاء اصطناعي وعلوم بيانات', 'CI/CD · Docker · خدمات مصغّرة']),
+                'tagline_en' => 'Software & AI/Data Science engineer working across DevOps, cloud (AWS) and full-stack — building and shipping real products.',
+                'tagline_fr' => "Ingénieur logiciel & IA/Data Science, actif en DevOps, cloud (AWS) et full-stack — je conçois et livre de vrais produits.",
+                'tagline_ar' => 'مهندس برمجيات وذكاء اصطناعي/علوم بيانات في DevOps والسحابة (AWS) والتطوير full-stack — أبني وأطلق منتجات حقيقية.',
                 'photo_url' => 'https://i.pravatar.cc/600?img=12',
                 'cta_primary_label_en' => 'Download CV',
                 'cta_primary_label_fr' => 'Télécharger CV',
@@ -48,10 +48,10 @@ class HomeSeeder extends Seeder
 
         // ── Stats ───────────────────────────────────────────────────────
         $stats = [
-            ['50+', 'fas fa-rocket', 'Projects Completed', 'Projets réalisés', 'مشاريع منجزة', 1],
-            ['30+', 'fas fa-face-smile', 'Happy Clients', 'Clients satisfaits', 'عملاء سعداء', 2],
-            ['3+', 'fas fa-award', 'Years Experience', 'Ans d\'expérience', 'سنوات خبرة', 3],
-            ['100%', 'fas fa-code', 'Commitment', 'Engagement', 'الالتزام', 4],
+            ['5+', 'fas fa-rocket', 'Projects Delivered', 'Projets livrés', 'مشاريع مُسلّمة', 1],
+            ['3+', 'fas fa-briefcase', 'Years Experience', "Ans d'expérience", 'سنوات خبرة', 2],
+            ['2', 'fas fa-graduation-cap', 'Eng. Degrees', "Diplômes d'ing.", 'شهادات هندسية', 3],
+            ['15+', 'fas fa-code', 'Technologies', 'Technologies', 'تقنيات', 4],
         ];
         foreach ($stats as [$value, $icon, $en, $fr, $ar, $order]) {
             DB::table('stats')->updateOrInsert(
@@ -69,10 +69,16 @@ class HomeSeeder extends Seeder
                 'bio_ar' => 'أنا مطوّر full-stack بخبرة تزيد عن 3 سنوات في بناء تطبيقات الويب من البداية إلى النهاية. أتخصّص في Vue وLaravel وTypeScript، وأهتمّ كثيرًا بنظافة البنية والأداء وتجربة المستخدم.',
                 'photo_url' => 'https://i.pravatar.cc/600?img=12',
                 'display_name' => 'Oussema Jbeli',
-                'email' => 'hello@oussemajbeli.dev',
-                'location_en' => 'Tunis, Tunisia',
-                'location_fr' => 'Tunis, Tunisie',
-                'location_ar' => 'تونس، تونس',
+                'email' => 'jbelioussema33@gmail.com',
+                'location_en' => 'Amdoun, Béja, Tunisia',
+                'location_fr' => 'Amdoun, Béja, Tunisie',
+                'location_ar' => 'عمدون، باجة، تونس',
+                'summary_en' => 'Software and AI/Data Science engineer with hands-on experience across the full delivery pipeline — from full-stack development to CI/CD, cloud infrastructure and microservices. I hold a Software Engineering license and am completing an AI & Data Science engineering degree (2027). Alongside my studies I have shipped production freelance projects and now work as a DevOps engineer at Emertek-AL, building pipelines and deploying on AWS.',
+                'summary_fr' => "Ingénieur logiciel et IA/Data Science avec une expérience concrète sur toute la chaîne de livraison — du développement full-stack au CI/CD, à l'infrastructure cloud et aux microservices. Titulaire d'une licence en génie logiciel et en cours d'un diplôme d'ingénieur IA & Data Science (2027). En parallèle de mes études, j'ai livré des projets freelance en production et je travaille désormais comme ingénieur DevOps chez Emertek-AL.",
+                'summary_ar' => 'مهندس برمجيات وذكاء اصطناعي/علوم بيانات بخبرة عملية عبر كامل سلسلة التسليم — من التطوير full-stack إلى CI/CD والبنية السحابية والخدمات المصغّرة. أحمل إجازة في هندسة البرمجيات وأُكمل حاليًا شهادة هندسة الذكاء الاصطناعي وعلوم البيانات (2027). إلى جانب دراستي، سلّمت مشاريع freelance في الإنتاج وأعمل الآن مهندس DevOps في Emertek-AL.',
+                'open_to_en' => 'DevOps · Full-Stack · Cloud · MLOps roles · freelance · internships',
+                'open_to_fr' => 'Postes DevOps · Full-Stack · Cloud · MLOps · freelance · stages',
+                'open_to_ar' => 'وظائف DevOps · Full-Stack · Cloud · MLOps · عمل حر · تدريبات',
                 'cta_url' => '#contact',
                 'updated_at' => $now,
                 'created_at' => $now,
@@ -81,10 +87,10 @@ class HomeSeeder extends Seeder
 
         // ── About bullets ─────────────────────────────────────────────────
         $bullets = [
-            ['fas fa-briefcase', '3+ years of professional experience', "Plus de 3 ans d'expérience professionnelle", 'أكثر من 3 سنوات من الخبرة المهنية', 1],
-            ['fas fa-rocket', '50+ projects delivered', '50+ projets livrés', 'أكثر من 50 مشروعًا تم تسليمه', 2],
-            ['fas fa-graduation-cap', 'BSc in Computer Science', 'Licence en informatique', 'إجازة في علوم الحاسوب', 3],
-            ['fas fa-language', 'Fluent in Arabic, French & English', 'Arabe, français et anglais courants', 'إتقان العربية والفرنسية والإنجليزية', 4],
+            ['fas fa-server', 'DevOps / Full-Stack Engineer @ Emertek-AL', 'Ingénieur DevOps / Full-Stack @ Emertek-AL', 'مهندس DevOps / Full-Stack في Emertek-AL', 1],
+            ['fas fa-graduation-cap', 'Software Engineering license — ISSAT Mateur', 'Licence en génie logiciel — ISSAT Mateur', 'إجازة في هندسة البرمجيات — ISSAT Mateur', 2],
+            ['fas fa-brain', 'AI & Data Science engineering — Iteams (2027)', 'Ingénierie IA & Data Science — Iteams (2027)', 'هندسة الذكاء الاصطناعي وعلوم البيانات — Iteams (2027)', 3],
+            ['fas fa-rocket', '5+ freelance platforms delivered since 2023', '5+ plateformes freelance livrées depuis 2023', 'أكثر من 5 منصّات freelance مُسلّمة منذ 2023', 4],
         ];
         foreach ($bullets as [$icon, $en, $fr, $ar, $order]) {
             DB::table('about_bullets')->updateOrInsert(
@@ -95,11 +101,11 @@ class HomeSeeder extends Seeder
 
         // ── Skill categories ──────────────────────────────────────────────
         $skills = [
-            ['Frontend Development', 'Développement Frontend', 'تطوير الواجهات الأمامية', 92, 1],
-            ['Backend Development', 'Développement Backend', 'تطوير الواجهات الخلفية', 88, 2],
-            ['Databases', 'Bases de données', 'قواعد البيانات', 82, 3],
-            ['DevOps & Cloud', 'DevOps & Cloud', 'DevOps والسحابة', 75, 4],
-            ['UI / UX Design', 'Design UI / UX', 'تصميم UI / UX', 70, 5],
+            ['Backend Development', 'Développement Backend', 'تطوير الواجهات الخلفية', 85, 1],
+            ['Frontend Development', 'Développement Frontend', 'تطوير الواجهات الأمامية', 85, 2],
+            ['DevOps & Cloud', 'DevOps & Cloud', 'DevOps والسحابة', 80, 3],
+            ['Databases', 'Bases de données', 'قواعد البيانات', 80, 4],
+            ['AI / Data Science', 'IA / Data Science', 'الذكاء الاصطناعي وعلوم البيانات', 65, 5],
         ];
         foreach ($skills as [$en, $fr, $ar, $pct, $order]) {
             DB::table('skill_categories')->updateOrInsert(

@@ -23,12 +23,12 @@ class SiteSeeder extends Seeder
                 'cv_url' => 'https://example.com/oussema-jbeli-cv.pdf',
                 'theme_default' => 'dark',
                 'lang_default' => 'en',
-                'meta_title_en' => 'Oussema Jbeli — Full-Stack Developer',
-                'meta_title_fr' => 'Oussema Jbeli — Développeur Full-Stack',
-                'meta_title_ar' => 'أسامة الجبلي — مطوّر full-stack',
-                'meta_description_en' => 'Full-stack developer crafting modern web apps with Vue, Laravel and TypeScript.',
-                'meta_description_fr' => "Développeur full-stack créant des applications web modernes avec Vue, Laravel et TypeScript.",
-                'meta_description_ar' => 'مطوّر full-stack يبني تطبيقات ويب حديثة باستخدام Vue وLaravel وTypeScript.',
+                'meta_title_en' => 'Oussema Jbeli — Software & AI/Data Science Engineer',
+                'meta_title_fr' => 'Oussema Jbeli — Ingénieur logiciel & IA/Data Science',
+                'meta_title_ar' => 'أسامة الجبلي — مهندس برمجيات وذكاء اصطناعي/علوم بيانات',
+                'meta_description_en' => 'DevOps, Cloud (AWS) and full-stack engineer building and shipping real products with Laravel, Vue and TypeScript.',
+                'meta_description_fr' => "Ingénieur DevOps, Cloud (AWS) et full-stack qui conçoit et livre de vrais produits avec Laravel, Vue et TypeScript.",
+                'meta_description_ar' => 'مهندس DevOps وسحابة (AWS) وfull-stack يبني ويطلق منتجات حقيقية باستخدام Laravel وVue وTypeScript.',
                 'footer_copy_en' => '© 2025 Oussema Jbeli. All rights reserved.',
                 'footer_copy_fr' => '© 2025 Oussema Jbeli. Tous droits réservés.',
                 'footer_copy_ar' => '© 2025 أسامة الجبلي. جميع الحقوق محفوظة.',
@@ -58,13 +58,15 @@ class SiteSeeder extends Seeder
         }
 
         $socials = [
-            ['linkedin', 'https://www.linkedin.com/in/oussema-jbeli', 'fab fa-linkedin', 'hero,about,footer', 1],
-            ['github', 'https://github.com/oussema-jbeli', 'fab fa-github', 'hero,about,footer', 2],
-            ['x', 'https://x.com/oussema_jbeli', 'fab fa-x-twitter', 'footer', 3],
-            ['dribbble', 'https://dribbble.com/oussema-jbeli', 'fab fa-dribbble', 'footer,blog_author', 4],
+            ['linkedin', 'https://www.linkedin.com/in/jbeli-oussema-235787253', 'fab fa-linkedin', 'hero,about,footer', 1, true],
+            ['github', 'https://github.com/OussemaJbeli', 'fab fa-github', 'hero,about,footer', 2, true],
+            ['email', 'mailto:jbelioussema33@gmail.com', 'fas fa-envelope', 'footer', 3, true],
+            // Not used yet — kept inactive so they don't render.
+            ['x', 'https://x.com/oussema_jbeli', 'fab fa-x-twitter', 'footer', 4, false],
+            ['dribbble', 'https://dribbble.com/oussema-jbeli', 'fab fa-dribbble', 'footer,blog_author', 5, false],
         ];
 
-        foreach ($socials as [$platform, $url, $icon, $displayIn, $order]) {
+        foreach ($socials as [$platform, $url, $icon, $displayIn, $order, $active]) {
             DB::table('social_links')->updateOrInsert(
                 ['platform' => $platform],
                 [
@@ -72,7 +74,7 @@ class SiteSeeder extends Seeder
                     'icon_class' => $icon,
                     'display_in' => $displayIn,
                     'sort_order' => $order,
-                    'is_active' => true,
+                    'is_active' => $active,
                     'updated_at' => $now,
                     'created_at' => $now,
                 ]

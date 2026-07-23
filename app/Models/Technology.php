@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Technology extends Model
@@ -14,6 +15,12 @@ class Technology extends Model
     protected $casts = [
         'is_featured' => 'boolean',
     ];
+
+    /** Skill bucket this technology belongs to (nullable). */
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(TechnologyGroup::class, 'group_id');
+    }
 
     public function projects(): BelongsToMany
     {
