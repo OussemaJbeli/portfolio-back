@@ -39,6 +39,8 @@ class ProjectSeeder extends Seeder
                 'slug' => 'boonapp',
                 'category' => 'web-apps',
                 'project_type' => 'freelance',
+                'thumbnail_url' => '/assets/projects/boon1.png',
+                'hero_image_url' => '/assets/projects/boon1.png',
                 'is_featured' => true,
                 'sort_order' => 1,
                 'completed_date' => '2023-11-01',
@@ -61,11 +63,19 @@ class ProjectSeeder extends Seeder
                 'roles' => [
                     ['fas fa-layer-group', 'Full-stack development', 'Développement full-stack', 'تطوير full-stack', 'Delivered the platform end to end — backend, API and frontend.', "Livraison de la plateforme de bout en bout — backend, API et frontend.", 'تسليم المنصّة بالكامل — الخلفية والـ API والواجهة.'],
                 ],
+                'gallery' => [
+                    '/assets/projects/boon2.png',
+                    '/assets/projects/boon3.png',
+                    '/assets/projects/boon4.png',
+                    '/assets/projects/boon5.png',
+                ],
             ],
             [
                 'slug' => 'ecoboxfactory',
                 'category' => 'web-apps',
                 'project_type' => 'freelance',
+                'thumbnail_url' => '/assets/projects/ecobox-1.png',
+                'hero_image_url' => '/assets/projects/ecobox-1.png',
                 'is_featured' => true,
                 'sort_order' => 2,
                 'completed_date' => '2023-08-01',
@@ -87,11 +97,21 @@ class ProjectSeeder extends Seeder
                 'roles' => [
                     ['fas fa-layer-group', 'Full-stack development', 'Développement full-stack', 'تطوير full-stack', 'Built the catalogue, product pages and backend.', 'Création du catalogue, des pages produit et du backend.', 'بناء الكتالوج وصفحات المنتجات والخلفية.'],
                 ],
+                'gallery' => [
+                    '/assets/projects/ecobox-2.png',
+                    '/assets/projects/ecobox-3.png',
+                    '/assets/projects/ecobox-4.png',
+                    '/assets/projects/ecobox-5.png',
+                    '/assets/projects/ecobox-6.png',
+                    '/assets/projects/ecobox-7.png',
+                ],
             ],
             [
                 'slug' => 'tenja7',
                 'category' => 'education',
                 'project_type' => 'freelance',
+                'thumbnail_url' => '/assets/projects/boon1.png',
+                'hero_image_url' => '/assets/projects/boon1.png',
                 'is_featured' => true,
                 'sort_order' => 3,
                 'completed_date' => '2023-04-01',
@@ -113,11 +133,19 @@ class ProjectSeeder extends Seeder
                 'roles' => [
                     ['fas fa-layer-group', 'Full-stack development', 'Développement full-stack', 'تطوير full-stack', 'Built courses, content and student management end to end.', 'Développement des cours, contenus et gestion des étudiants de bout en bout.', 'بناء الدورات والمحتوى وإدارة الطلاب بالكامل.'],
                 ],
+                'gallery' => [
+                    '/assets/projects/boon2.png',
+                    '/assets/projects/boon3.png',
+                    '/assets/projects/boon4.png',
+                    '/assets/projects/boon5.png',
+                ],
             ],
             [
                 'slug' => 'ai-toolbox',
                 'category' => 'web-apps',
                 'project_type' => 'academic',
+                'thumbnail_url' => '/assets/projects/boon1.png',
+                'hero_image_url' => '/assets/projects/boon1.png',
                 'is_featured' => true,
                 'sort_order' => 4,
                 'completed_date' => '2024-06-01',
@@ -139,11 +167,19 @@ class ProjectSeeder extends Seeder
                 'roles' => [
                     ['fas fa-brain', 'End-to-end ownership', 'Responsabilité de bout en bout', 'مسؤولية شاملة', 'Owned requirements, architecture, development and delivery.', 'Prise en charge des besoins, de l\'architecture, du développement et de la livraison.', 'تولّي المتطلبات والهندسة والتطوير والتسليم.'],
                 ],
+                'gallery' => [
+                    '/assets/projects/boon2.png',
+                    '/assets/projects/boon3.png',
+                    '/assets/projects/boon4.png',
+                    '/assets/projects/boon5.png',
+                ],
             ],
             [
                 'slug' => 'tolab',
                 'category' => 'education',
                 'project_type' => 'freelance',
+                'thumbnail_url' => '/assets/projects/boon1.png',
+                'hero_image_url' => '/assets/projects/boon1.png',
                 'is_featured' => false,
                 'sort_order' => 5,
                 'completed_date' => '2022-09-01',
@@ -165,11 +201,19 @@ class ProjectSeeder extends Seeder
                 'roles' => [
                     ['fas fa-layer-group', 'Full-stack development', 'Développement full-stack', 'تطوير full-stack', 'Built the platform end to end.', 'Développement de la plateforme de bout en bout.', 'بناء المنصّة بالكامل.'],
                 ],
+                'gallery' => [
+                    '/assets/projects/boon2.png',
+                    '/assets/projects/boon3.png',
+                    '/assets/projects/boon4.png',
+                    '/assets/projects/boon5.png',
+                ],
             ],
             [
                 'slug' => 'animated-landing-pages',
                 'category' => 'landing-pages',
                 'project_type' => 'freelance',
+                'thumbnail_url' => '/assets/projects/boon1.png',
+                'hero_image_url' => '/assets/projects/boon1.png',
                 'is_featured' => false,
                 'sort_order' => 6,
                 'completed_date' => '2023-01-01',
@@ -191,6 +235,12 @@ class ProjectSeeder extends Seeder
                 'roles' => [
                     ['fas fa-wand-magic-sparkles', 'Front-end & motion', 'Front-end & motion', 'الواجهة والحركة', 'Designed and built animated, responsive landing pages.', 'Conception et développement de landing pages animées et responsives.', 'تصميم وبناء صفحات هبوط متحرّكة ومتجاوبة.'],
                 ],
+                'gallery' => [
+                    '/assets/projects/boon2.png',
+                    '/assets/projects/boon3.png',
+                    '/assets/projects/boon4.png',
+                    '/assets/projects/boon5.png',
+                ],
             ],
         ];
 
@@ -200,8 +250,8 @@ class ProjectSeeder extends Seeder
                 [
                     'category_id' => $catId($p['category']),
                     'project_type' => $p['project_type'],
-                    'thumbnail_url' => 'https://picsum.photos/seed/'.$p['slug'].'/800/600',
-                    'hero_image_url' => 'https://picsum.photos/seed/'.$p['slug'].'-hero/1600/900',
+                    'thumbnail_url' => $p['thumbnail_url'] ?? null,
+                    'hero_image_url' => $p['hero_image_url'] ?? null,
                     'is_featured' => $p['is_featured'],
                     'is_active' => true,
                     'sort_order' => $p['sort_order'],
@@ -220,14 +270,26 @@ class ProjectSeeder extends Seeder
 
             $projectId = DB::table('projects')->where('slug', $p['slug'])->value('id');
 
-            // Children — clear then insert (idempotent). One placeholder gallery image.
+            // Children — clear then insert (idempotent). A few placeholder gallery
+            // images per project; swap them for real screenshots from the admin board.
             DB::table('project_gallery')->where('project_id', $projectId)->delete();
-            DB::table('project_gallery')->insert([
-                'project_id' => $projectId,
-                'image_url' => 'https://picsum.photos/seed/'.$p['slug'].'-g1/1200/800',
-                'alt_en' => $p['title_en'], 'alt_fr' => $p['title_fr'], 'alt_ar' => $p['title_ar'],
-                'sort_order' => 1, 'updated_at' => $now, 'created_at' => $now,
-            ]);
+
+            $galleryRows = [];
+
+            foreach ($p['gallery'] as $index => $image) {
+                $galleryRows[] = [
+                    'project_id' => $projectId,
+                    'image_url' => $image,
+                    'alt_en' => $p['title_en'].' — screenshot '.($index + 1),
+                    'alt_fr' => $p['title_fr'].' — capture '.($index + 1),
+                    'alt_ar' => $p['title_ar'].' — لقطة '.($index + 1),
+                    'sort_order' => $index + 1,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ];
+            }
+
+            DB::table('project_gallery')->insert($galleryRows);
 
             DB::table('project_features')->where('project_id', $projectId)->delete();
             foreach ($p['features'] as $i => [$en, $fr, $ar]) {

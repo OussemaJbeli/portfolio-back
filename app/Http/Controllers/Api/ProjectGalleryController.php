@@ -45,7 +45,7 @@ class ProjectGalleryController extends Controller
     private function rules(): array
     {
         return [
-            'image_url' => ['required', 'url', 'max:500'],
+            'image_url' => $this->imageUrlRules(true),
             'alt_en' => ['nullable', 'string', 'max:255'],
             'alt_fr' => ['nullable', 'string', 'max:255'],
             'alt_ar' => ['nullable', 'string', 'max:255'],

@@ -6,7 +6,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Home-page content: hero, about + bullets, skill categories and technologies.
+ * Home-page content: hero, about + bullets, the skills section heading,
+ * skill categories and technologies.
  */
 class HomeSeeder extends Seeder
 {
@@ -31,7 +32,7 @@ class HomeSeeder extends Seeder
                 'tagline_en' => 'Software & AI/Data Science engineer working across DevOps, cloud (AWS) and full-stack — building and shipping real products.',
                 'tagline_fr' => "Ingénieur logiciel & IA/Data Science, actif en DevOps, cloud (AWS) et full-stack — je conçois et livre de vrais produits.",
                 'tagline_ar' => 'مهندس برمجيات وذكاء اصطناعي/علوم بيانات في DevOps والسحابة (AWS) والتطوير full-stack — أبني وأطلق منتجات حقيقية.',
-                'photo_url' => 'https://i.pravatar.cc/600?img=12',
+                'photo_url' => '/assets/hero/home.png',
                 'cta_primary_label_en' => 'Download CV',
                 'cta_primary_label_fr' => 'Télécharger CV',
                 'cta_primary_label_ar' => 'تحميل السيرة الذاتية',
@@ -39,7 +40,7 @@ class HomeSeeder extends Seeder
                 'cta_secondary_label_en' => 'View My Works',
                 'cta_secondary_label_fr' => 'Voir mes travaux',
                 'cta_secondary_label_ar' => 'عرض أعمالي',
-                'cta_secondary_url' => '#projects',
+                'cta_secondary_url' => '/projects',
                 'code_badge' => '</>',
                 'updated_at' => $now,
                 'created_at' => $now,
@@ -50,7 +51,7 @@ class HomeSeeder extends Seeder
         $stats = [
             ['5+', 'fas fa-rocket', 'Projects Delivered', 'Projets livrés', 'مشاريع مُسلّمة', 1],
             ['3+', 'fas fa-briefcase', 'Years Experience', "Ans d'expérience", 'سنوات خبرة', 2],
-            ['2', 'fas fa-graduation-cap', 'Eng. Degrees', "Diplômes d'ing.", 'شهادات هندسية', 3],
+            ['6', 'fas fa-graduation-cap', 'Eng. Degrees', "Diplômes d'ing.", 'شهادات هندسية', 3],
             ['15+', 'fas fa-code', 'Technologies', 'Technologies', 'تقنيات', 4],
         ];
         foreach ($stats as [$value, $icon, $en, $fr, $ar, $order]) {
@@ -67,7 +68,7 @@ class HomeSeeder extends Seeder
                 'bio_en' => "I'm a full-stack developer with 3+ years of experience building web applications end to end. I specialise in Vue, Laravel and TypeScript, and I care deeply about clean architecture, performance and great user experience.",
                 'bio_fr' => "Je suis développeur full-stack avec plus de 3 ans d'expérience dans la création d'applications web de bout en bout. Je me spécialise en Vue, Laravel et TypeScript, avec une attention particulière à l'architecture, la performance et l'expérience utilisateur.",
                 'bio_ar' => 'أنا مطوّر full-stack بخبرة تزيد عن 3 سنوات في بناء تطبيقات الويب من البداية إلى النهاية. أتخصّص في Vue وLaravel وTypeScript، وأهتمّ كثيرًا بنظافة البنية والأداء وتجربة المستخدم.',
-                'photo_url' => 'https://i.pravatar.cc/600?img=12',
+                'photo_url' => '/assets/about/about.png',
                 'display_name' => 'Oussema Jbeli',
                 'email' => 'jbelioussema33@gmail.com',
                 'location_en' => 'Amdoun, Béja, Tunisia',
@@ -98,6 +99,21 @@ class HomeSeeder extends Seeder
                 ['icon_class' => $icon, 'text_fr' => $fr, 'text_ar' => $ar, 'sort_order' => $order, 'is_active' => true, 'updated_at' => $now, 'created_at' => $now]
             );
         }
+
+        // ── Skills section heading (singleton) ────────────────────────────
+        DB::table('skills_section')->updateOrInsert(
+            ['id' => 1],
+            [
+                'section_badge_en' => '> SKILLS',
+                'section_badge_fr' => '> COMPÉTENCES',
+                'section_badge_ar' => '> المهارات',
+                'heading_en' => 'My Skills',
+                'heading_fr' => 'Mes compétences',
+                'heading_ar' => 'مهاراتي',
+                'updated_at' => $now,
+                'created_at' => $now,
+            ]
+        );
 
         // ── Skill categories ──────────────────────────────────────────────
         $skills = [

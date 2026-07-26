@@ -40,69 +40,67 @@ class ProfileSeeder extends Seeder
         // ── Technologies — [name, group, proficiency, icon_class, color] ─────
         $techs = [
             // Programming languages
-            ['Java', 'programming-languages', 'proficient', 'devicon-java-plain', '#007396'],
-            ['Python', 'programming-languages', 'core', 'devicon-python-plain', '#3776AB'],
-            ['PHP', 'programming-languages', 'core', 'devicon-php-plain', '#777BB4'],
-            ['C', 'programming-languages', 'familiar', 'devicon-c-plain', '#A8B9CC'],
-            ['C++', 'programming-languages', 'familiar', 'devicon-cplusplus-plain', '#00599C'],
-            ['JavaScript', 'programming-languages', 'core', 'devicon-javascript-plain', '#F7DF1E'],
-            ['TypeScript', 'programming-languages', 'core', 'devicon-typescript-plain', '#3178C6'],
-            ['HTML', 'programming-languages', 'proficient', 'devicon-html5-plain', '#E34F26'],
-            ['CSS', 'programming-languages', 'proficient', 'devicon-css3-plain', '#1572B6'],
+            ['Java', 'programming-languages', 'proficient', 'devicon-java-plain', '#007396', '/assets/technologies/icons8-java-48.png'],//
+            ['Python', 'programming-languages', 'core', 'devicon-python-plain', '#3776AB', '/assets/technologies/icons8-python-48.png'],//
+            ['PHP', 'programming-languages', 'core', 'devicon-php-plain', '#777BB4', '/assets/technologies/icons8-php-48.png'],//
+            ['C', 'programming-languages', 'familiar', 'devicon-c-plain', '#A8B9CC', '/assets/technologies/icons8-c-programming-48.png'],//
+            ['C++', 'programming-languages', 'familiar', 'devicon-cplusplus-plain', '#00599C', '/assets/technologies/icons8-c-48.png'],//
+            ['JavaScript', 'programming-languages', 'core', 'devicon-javascript-plain', '#F7DF1E', '/assets/technologies/icons8-javascript-48.png'],//
+            ['TypeScript', 'programming-languages', 'core', 'devicon-typescript-plain', '#3178C6', '/assets/technologies/icons8-typescript-48.png'],//
             // Frameworks & libraries
-            ['Spring Boot', 'frameworks', 'proficient', 'devicon-spring-plain', '#6DB33F'],
-            ['JavaFX', 'frameworks', 'familiar', 'devicon-java-plain', '#007396'],
-            ['Laravel', 'frameworks', 'core', 'devicon-laravel-plain', '#FF2D20'],
-            ['Vue.js', 'frameworks', 'core', 'devicon-vuejs-plain', '#42B883'],
-            ['React', 'frameworks', 'proficient', 'devicon-react-original', '#61DAFB'],
-            ['Node.js', 'frameworks', 'proficient', 'devicon-nodejs-plain', '#339933'],
-            ['Express', 'frameworks', 'proficient', 'devicon-express-original', '#000000'],
-            ['Django', 'frameworks', 'familiar', 'devicon-django-plain', '#092E20'],
-            ['Flask', 'frameworks', 'familiar', 'devicon-flask-original', '#000000'],
-            ['Fastify', 'frameworks', 'familiar', 'devicon-fastify-plain', '#000000'],
-            ['Sass', 'frameworks', 'proficient', 'devicon-sass-original', '#CC6699'],
-            ['Tailwind CSS', 'frameworks', 'core', 'devicon-tailwindcss-plain', '#06B6D4'],
+            ['Spring Boot', 'frameworks', 'proficient', 'devicon-spring-plain', '#6DB33F', '/assets/technologies/icons8-spring-boot-40.png'],//
+            ['JavaFX', 'frameworks', 'familiar', 'devicon-java-plain', '#007396', '/assets/technologies/JavaFX_Logo.png'],//
+            ['Laravel', 'frameworks', 'core', 'devicon-laravel-plain', '#FF2D20', '/assets/technologies/icons8-laravel-64.png'],//
+            ['Vue.js', 'frameworks', 'core', 'devicon-vuejs-plain', '#42B883', '/assets/technologies/icons8-vue-js-48.png'],//
+            ['React', 'frameworks', 'proficient', 'devicon-react-original', '#61DAFB', '/assets/technologies/icons8-react-48.png'],//
+            ['Node.js', 'frameworks', 'proficient', 'devicon-nodejs-plain', '#339933', '/assets/technologies/icons8-node-js-48.png'],//
+            ['Express', 'frameworks', 'proficient', 'devicon-express-original', '#000000', '/assets/technologies/icons8-express-js-50.png'],//
+            ['Nuxt Js', 'frameworks', 'proficient', 'devicon-nuxtjs-plain', '#00DC82', '/assets/technologies/icons8-nuxt-js-48.png'],//
+            ['Django', 'frameworks', 'familiar', 'devicon-django-plain', '#092E20', '/assets/technologies/icons8-django-48.png'],//
+            ['Flask', 'frameworks', 'familiar', 'devicon-flask-original', '#000000', '/assets/technologies/icons8-flask-50.png'],//
+            ['Fastify', 'frameworks', 'familiar', 'devicon-fastify-plain', '#000000', '/assets/technologies/Fastify.png'],
+            ['Sass', 'frameworks', 'proficient', 'devicon-sass-original', '#CC6699', '/assets/technologies/icons8-sass-48.png'],//
+            ['Tailwind CSS', 'frameworks', 'core', 'devicon-tailwindcss-plain', '#06B6D4', '/assets/technologies/icons8-tailwind-css-48.png'],//
             // Databases
-            ['MySQL', 'databases', 'core', 'devicon-mysql-plain', '#4479A1'],
-            ['PostgreSQL', 'databases', 'proficient', 'devicon-postgresql-plain', '#4169E1'],
-            ['MongoDB', 'databases', 'proficient', 'devicon-mongodb-plain', '#47A248'],
-            ['Redis', 'databases', 'proficient', 'devicon-redis-plain', '#DC382D'],
+            ['MySQL', 'databases', 'core', 'devicon-mysql-plain', '#4479A1', '/assets/technologies/icons8-mysql-48.png'],//
+            ['PostgreSQL', 'databases', 'proficient', 'devicon-postgresql-plain', '#4169E1', '/assets/technologies/icons8-postgresql-48.png'],//
+            ['MongoDB', 'databases', 'proficient', 'devicon-mongodb-plain', '#47A248', '/assets/technologies/icons8-mongodb-48.png'],//
+            ['Redis', 'databases', 'proficient', 'devicon-redis-plain', '#DC382D', '/assets/technologies/icons8-redis-48.png'],//
             // Big data
-            ['Hadoop', 'big-data', 'familiar', 'devicon-hadoop-plain', '#66CCFF'],
-            ['Spark', 'big-data', 'familiar', 'devicon-apachespark-plain', '#E25A1C'],
+            ['Hadoop', 'big-data', 'familiar', 'devicon-hadoop-plain', '#66CCFF', '/assets/technologies/icons8-hadoop-distributed-file-system-48.png'],//
+            ['Spark', 'big-data', 'familiar', 'devicon-apachespark-plain', '#E25A1C', '/assets/technologies/icons8-apache-spark-48.png'],//
             // DevOps & cloud
-            ['Jira', 'devops-cloud', 'proficient', 'devicon-jira-plain', '#0052CC'],
-            ['Trello', 'devops-cloud', 'proficient', 'devicon-trello-plain', '#0052CC'],
-            ['VS Code', 'devops-cloud', 'core', 'devicon-vscode-plain', '#007ACC'],
-            ['Git', 'devops-cloud', 'core', 'devicon-git-plain', '#F05032'],
-            ['GitHub', 'devops-cloud', 'core', 'devicon-github-original', '#181717'],
-            ['GitLab', 'devops-cloud', 'proficient', 'devicon-gitlab-plain', '#FC6D26'],
-            ['npm', 'devops-cloud', 'proficient', 'devicon-npm-original-wordmark', '#CB3837'],
-            ['Jenkins', 'devops-cloud', 'proficient', 'devicon-jenkins-plain', '#D24939'],
-            ['GitHub Actions', 'devops-cloud', 'proficient', 'devicon-githubactions-plain', '#2088FF'],
-            ['GitLab CI', 'devops-cloud', 'proficient', 'devicon-gitlab-plain', '#FC6D26'],
-            ['Docker', 'devops-cloud', 'core', 'devicon-docker-plain', '#2496ED'],
-            ['AWS EC2', 'devops-cloud', 'core', 'devicon-amazonwebservices-plain-wordmark', '#FF9900'],
-            ['Kubernetes', 'devops-cloud', 'familiar', 'devicon-kubernetes-plain', '#326CE5'],
-            ['Grafana', 'devops-cloud', 'proficient', 'devicon-grafana-original', '#F46800'],
-            ['Prometheus', 'devops-cloud', 'proficient', 'devicon-prometheus-original', '#E6522C'],
+            ['Jira', 'devops-cloud', 'proficient', 'devicon-jira-plain', '#0052CC', '/assets/technologies/icons8-jira-48.png'],//
+            ['Trello', 'devops-cloud', 'proficient', 'devicon-trello-plain', '#0052CC', '/assets/technologies/icons8-trello-48.png'],//
+            ['Git', 'devops-cloud', 'core', 'devicon-git-plain', '#F05032', '/assets/technologies/icons8-git-48.png'],//
+            ['Jenkins', 'devops-cloud', 'proficient', 'devicon-jenkins-plain', '#D24939', '/assets/technologies/icons8-jenkins-48.png'],//
+            ['GitHub Actions', 'devops-cloud', 'proficient', 'devicon-githubactions-plain', '#2088FF', '/assets/technologies/icons8-github-48.png'],//
+            ['GitLab CI', 'devops-cloud', 'proficient', 'devicon-gitlab-plain', '#FC6D26', '/assets/technologies/icons8-gitlab-48.png'],//
+            ['Docker', 'devops-cloud', 'core', 'devicon-docker-plain', '#2496ED', '/assets/technologies/icons8-docker-48.png'],//
+            ['AWS EC2', 'devops-cloud', 'core', 'devicon-amazonwebservices-plain-wordmark', '#FF9900', '/assets/technologies/icons8-amazon-web-services-48.png'],//
+            ['Kubernetes', 'devops-cloud', 'familiar', 'devicon-kubernetes-plain', '#326CE5', '/assets/technologies/icons8-kubernetes-48.png'],//
+            ['Grafana', 'devops-cloud', 'proficient', 'devicon-grafana-original', '#F46800', '/assets/technologies/icons8-grafana-48.png'],//
+            ['Prometheus', 'devops-cloud', 'proficient', 'devicon-prometheus-original', '#E6522C', '/assets/technologies/icons8-prometheus-48.png'],//
             // AI / data science
-            ['Deep Learning', 'ai-data-science', 'familiar', null, null],
-            ['NLP', 'ai-data-science', 'familiar', null, null],
-            ['Data Analytics', 'ai-data-science', 'proficient', null, null],
-            ['MapReduce', 'ai-data-science', 'familiar', null, null],
-            ['MLOps', 'ai-data-science', 'familiar', null, null],
+            ['Deep Learning', 'ai-data-science', 'familiar', null, null, '/assets/technologies/icons8-deep-learning-64.png'],
+            ['NLP', 'ai-data-science', 'familiar', null, null, '/assets/technologies/icons8-brain-94.png'],
+            ['Data Analytics', 'ai-data-science', 'proficient', null, null, '/assets/technologies/icons8-data-analytics-64.png'],
+            ['MLOps', 'ai-data-science', 'familiar', null, null, '/assets/technologies/mlops.png'],
         ];
         // A curated handful shown on the home-page tech strip.
-        $featured = ['Laravel', 'Vue.js', 'TypeScript', 'Docker', 'AWS EC2', 'Python', 'MySQL', 'Git'];
+        $dev = ['Laravel', 'Vue.js', 'TypeScript', 'Python', 'MySQL'];
+        $devops = ['Docker', 'AWS EC2', 'Jenkins',];
+        $ai = ['Spark', 'NLP'];
+        $featured = array_merge($ai, $devops, $dev);
         $order = 0;
-        foreach ($techs as [$name, $group, $prof, $icon, $color]) {
+        foreach ($techs as [$name, $group, $prof, $icon, $color, $icon_url]) {
             DB::table('technologies')->updateOrInsert(
                 ['name' => $name],
                 [
                     'group_id' => $gid($group),
                     'proficiency' => $prof,
                     'icon_class' => $icon,
+                    'icon_url' => $icon_url,
                     'color' => $color,
                     'is_featured' => in_array($name, $featured, true),
                     'sort_order' => $order++,

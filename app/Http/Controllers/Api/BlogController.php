@@ -78,7 +78,7 @@ class BlogController extends Controller
             'title_en' => ['required', 'string', 'max:300'],
             'title_fr' => ['nullable', 'string', 'max:300'],
             'title_ar' => ['nullable', 'string', 'max:300'],
-            'cover_image_url' => ['nullable', 'url', 'max:500'],
+            'cover_image_url' => $this->imageUrlRules(),
             'read_time_minutes' => ['nullable', 'integer', 'min:0', 'max:255'],
             'is_featured' => ['boolean'],
             'is_active' => ['boolean'],

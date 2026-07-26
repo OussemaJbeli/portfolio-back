@@ -14,8 +14,9 @@ use Illuminate\Validation\Rule;
  * Image uploads for the CMS. Files are stored under `public/assets/<folder>`,
  * one folder per content area, and served directly by the web server.
  *
- * Returns an absolute URL (built from the request host) so the value can be
- * stored straight into a `*_url` column that the API validates as a URL.
+ * Returns a relative "/assets/<folder>/<file>" path — that is the value stored
+ * in the DB. The frontend prefixes it with the backend URL when rendering,
+ * which keeps stored data host-agnostic and portable across environments.
  */
 class UploadController extends Controller
 {
@@ -45,8 +46,10 @@ class UploadController extends Controller
 
         $path = "/assets/{$folder}/{$name}";
 
+        // `url` and `path` are both the relative path — the stored, host-agnostic
+        // value. `url` is kept for backward compatibility with existing callers.
         return response()->json([
-            'url' => $request->getSchemeAndHttpHost().$path,
+            'url' => $path,
             'path' => $path,
             'folder' => $folder,
             'name' => $name,

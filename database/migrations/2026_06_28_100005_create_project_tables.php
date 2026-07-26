@@ -90,6 +90,9 @@ return new class extends Migration
             $table->string('alt_ar', 255)->nullable();
             $table->unsignedSmallInteger('sort_order')->default(0);
             $table->timestamps();
+
+            // Detail page always pulls a project's images in display order.
+            $table->index(['project_id', 'sort_order'], 'idx_project_gallery_order');
         });
 
         // 13. PROJECT FEATURES — "About the Project" bullet checklist.

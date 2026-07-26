@@ -60,10 +60,6 @@ class SiteSeeder extends Seeder
         $socials = [
             ['linkedin', 'https://www.linkedin.com/in/jbeli-oussema-235787253', 'fab fa-linkedin', 'hero,about,footer', 1, true],
             ['github', 'https://github.com/OussemaJbeli', 'fab fa-github', 'hero,about,footer', 2, true],
-            ['email', 'mailto:jbelioussema33@gmail.com', 'fas fa-envelope', 'footer', 3, true],
-            // Not used yet — kept inactive so they don't render.
-            ['x', 'https://x.com/oussema_jbeli', 'fab fa-x-twitter', 'footer', 4, false],
-            ['dribbble', 'https://dribbble.com/oussema-jbeli', 'fab fa-dribbble', 'footer,blog_author', 5, false],
         ];
 
         foreach ($socials as [$platform, $url, $icon, $displayIn, $order, $active]) {
